@@ -1,0 +1,10 @@
+SpeechRecognition
+gtts
+pygame
+openai
+PyAudio
+python-vlc
+beautifulsoup4
+mediapipe
+transformers
+torch
