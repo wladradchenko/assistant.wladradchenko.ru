@@ -50,6 +50,36 @@ The application includes:
 
 Join and listen to "Infinite Neural Radio" on [GitHub](https://github.com/wladradchenko/assistant.wladradchenko.ru), [YouTube](https://www.youtube.com/@wladradchenko), and on the [official website](https://radio.wladradchenko.ru).
 
+## Setup
+Requirements Python version 3.10.
+
+Create venv
+
+```
+python3.10 -m venv venv
+```
+
+Activate venv
+
+```
+// Linux / MacOS
+source venv/bin/activate
+// Windows
+venv\\Scripts\\activate.bat
+```
+
+Install requirements
+
+```
+python -m pip install -r requirements.txt
+```
+
+Run
+
+```
+python main.py
+```
+
 <!-- DONATION -->
 ## Support
 
