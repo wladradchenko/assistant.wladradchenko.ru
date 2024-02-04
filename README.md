@@ -28,7 +28,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Project
 
-The Voice Assistant is an anniversary project in honor of 10,000 subscribers in TenChat blog. The project is suitable for integration with Jetson Nano, Raspberry Pi 4, and Pi 5. To activate the voice assistant, make the "Okay" gesture, and then say "Listening" followed by your request.
+The Voice Assistant is an anniversary project in honor of 10,000 subscribers in [TenChat](https://tenchat.ru/wladradchenko) blog. The project is suitable for integration with Jetson Nano, Raspberry Pi 4, and Pi 5. To activate the voice assistant, make the "Okay" gesture, and then say "Listening" followed by your request.
 
 The project's goal is to create a voice assistant that includes "Neural Radio," reads posts from authors in TenChat, or asks questions to ChatGPT. Working with ChatGPT requires an OpenAI API key.
 
