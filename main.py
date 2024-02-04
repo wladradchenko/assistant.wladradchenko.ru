@@ -47,7 +47,7 @@ else:
 authors = {"Команда ТенЧат": "TenChat_admin", "ТенЧат для бизнеса": "tenchat_business", "Советы от Зевса": "zeus", "Семен Теняев": "tenchat", "Олег Ратунин": "oleg", "Владислав Радченко": "wladradchenko"}
 
 # Commands to run by voice
-commands = ["play music", "what news", "what are you created for", "other"]
+commands = ["play music", "what news", "what are you created for", "what is genre you know", "other"]
 
 # Initialize VLC player for streaming music
 player = vlc.MediaPlayer(music_stations[0].get("url"))
@@ -207,6 +207,11 @@ def callback(recognizer, audio):
             stop_news()
             pause_music()
             text = get_translate("To turn on the Neural Radio and read TenChat!", targetLang=config.assistant, sourceLang="en")
+            speak(text, config.assistant)
+        elif predicted_command == "what is genre you know":
+            stop_news()
+            pause_music()
+            text = get_translate("I know genres" + ", ".join(m.get("name") for m in music_stations), targetLang=config.assistant, sourceLang="en")
             speak(text, config.assistant)
         elif predicted_command == "what news":
             # Get specific news
