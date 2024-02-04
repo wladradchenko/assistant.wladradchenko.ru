@@ -35,7 +35,7 @@ The project's goal is to create a voice assistant that includes "Neural Radio," 
 Main Features:
 
 - Activation with the "Okay" gesture.
-- Ask to play any genre of music from "Neural Radio" or explore new neural music.
+- Ask to play any genre of music from "Neural Radio" or explore new neural music. Anyway, you can ask the voice assistant what music genres are available on Neural Radio.
 - Ask to read the latest news from your favorite author in TenChat. New authors can be added to the list.
 - Make a request to ChatGPT.
 
