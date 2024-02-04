@@ -90,7 +90,7 @@ You can support the project's author in developing creative ideas or simply buy 
 ## Contact
 
 Authors: 
-- [Vladislav Radchenko](https://github.com/wladradchenko/)
+- [Wladislav Radchenko](https://github.com/wladradchenko/)
 
 Email: [i@wladradchenko.ru](i@wladradchenko.ru)
 
