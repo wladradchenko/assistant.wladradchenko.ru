@@ -81,8 +81,10 @@ def pause_music():
         player.stop()
 
 
+tts_num = 0  # TODO remove
+
 def speak(text, lang='ru'):
-    global is_speaking
+    global is_speaking, tts_num
     is_speaking = True  # Set flag to True when speaking starts
     phrases = text.split('. ')
     try:
@@ -91,6 +93,8 @@ def speak(text, lang='ru'):
                 break
             if phrase:  # Check if the phrase is not empty
                 tts = gTTS(text=phrase, lang=lang, slow=False)
+                tts.save(f"wav/{tts_num}.mp3")
+                tts_num += 1
                 tts.save("response.mp3")
                 mixer.music.load("response.mp3")
                 mixer.music.play()
@@ -206,7 +210,7 @@ def callback(recognizer, audio):
         elif predicted_command == "what are you created for":
             stop_news()
             pause_music()
-            text = get_translate("To turn on the Neural Radio and read TenChat!", targetLang=config.assistant, sourceLang="en")
+            text = get_translate("To turn on the neural radio and read TenChat!", targetLang=config.assistant, sourceLang="en")
             speak(text, config.assistant)
         elif predicted_command == "what is genre you know":
             stop_news()
@@ -234,11 +238,11 @@ def callback(recognizer, audio):
             pause_music()
             # Prepare the conversation history for GPT model
             text = get_translate(voice, targetLang="en", sourceLang=config.assistant)
-            conversation_history = f"You are an intelligent assistant.\nHuman: {text}\nAI:"
+            conversation_history = f"You are an intelligent assistant with name TenChat.\nHuman: {text}\nAI:"
 
             # Call the OpenAI API to generate a response
             response = client.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-3.5-turbo-instruct",
                 prompt=conversation_history,
                 temperature=0.7,
                 max_tokens=150,
@@ -282,7 +286,7 @@ def calculate_angle(a, b, c):
 
 def detect_gesture():
     mp_hands = mp.solutions.hands
-    hands = mp_hands.Hands(max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.5)
+    hands = mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5)
     mp_drawing = mp.solutions.drawing_utils
 
     def recognize_gesture(landmarks):
@@ -326,7 +330,10 @@ def detect_gesture():
                 # print("Unknown")
                 return False
 
+    # Webcam
     cap = cv2.VideoCapture(0)
+    # Jetson
+    # cap = cv2.VideoCapture('nvarguscamerasrc ! video/x-raw(memory:NVMM), width=640, height=320, format=(string)NV12, framerate=(fraction)20/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink', cv2.CAP_GSTREAMER)
 
     speech_thread = None  # Initialize the speech thread variable
 
