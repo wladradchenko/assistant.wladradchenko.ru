@@ -81,10 +81,8 @@ def pause_music():
         player.stop()
 
 
-tts_num = 0  # TODO remove
-
 def speak(text, lang='ru'):
-    global is_speaking, tts_num
+    global is_speaking
     is_speaking = True  # Set flag to True when speaking starts
     phrases = text.split('. ')
     try:
@@ -93,8 +91,6 @@ def speak(text, lang='ru'):
                 break
             if phrase:  # Check if the phrase is not empty
                 tts = gTTS(text=phrase, lang=lang, slow=False)
-                tts.save(f"wav/{tts_num}.mp3")
-                tts_num += 1
                 tts.save("response.mp3")
                 mixer.music.load("response.mp3")
                 mixer.music.play()
